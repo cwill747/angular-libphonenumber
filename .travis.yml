@@ -1,12 +1,15 @@
-  language: node_js
-  node_js:
-    - '0.10'
-    - '0.11'
-  before_install:
-    - 'export DISPLAY=:99.0'
-    - 'sh -e /etc/init.d/xvfb start'
-  before_script:
-    - 'npm install -g bower gulp'
-    - 'npm install'
-    - 'bower install'
-  script: gulp
+language: node_js
+node_js:
+- '0.10'
+- '0.11'
+before_install:
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+before_script:
+- npm install -g bower gulp
+- npm install
+- bower install
+script: gulp
+notifications:
+  slack:
+    secure: RMNcUVDT7HTjK0Zjh/PXidyntk1zM1sOEVrsGxPjN8EGEPSXuaperQ02ckhzkxV3jUEOIw2WkFjJ0hBYvQy+h3zj57gZ0w28IiNfiUBr02v3w5iySOh/lOrbsbwO/2QVo5O9cEkppzO2eIaBGwc2FgWvwZ2mctaH0FmLOekG568=
