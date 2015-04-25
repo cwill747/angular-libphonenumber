@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Angular libphonenumber Demo</title>
+  <script src="../bower_components/angular/angular.min.js"></script>
+  <script src="../dist/libphonenumber.js"></script>
+  <script src="../dist/angular-libphonenumber.js"></script>
+  <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script>
+    angular.module('demo', ['cwill747.phonenumber']);
+    function ctrl($scope) {
+      $scope.initializedPhoneNumber = '3133536767';
+    }
+  </script>
+</head>
+<body ng-app="demo">
+<form name="form" ng-controller="ctrl">
+  <h2>angular-libphonenumber</h2>
+  <label for="countrycode">Country Code:</label>
+  <input id="countrycode" type="text" name="countrycode" ng-model="countrycode"><br>
+  <label for="phoneNumberTest">Phone Number:</label>
+
+  <input id="phoneNumberTest" type="text" name="phoneNumberTest" ng-model="phoneNumber" phone-number
+         country-code="countrycode"><br>
+  <span id="phone-value">{{phoneNumber}}</span> - {{form.phoneNumberTest.$valid}}<br>
+</form>
+<div class="row">
+  <div class="col-xs-3">
+    <h3>Phone Number</h3>
+    <table class="table table-bordered">
+      <tbody>
+      <tr>
+        <td ng-class="{ success: form.phoneNumberTest.$valid, danger: form.phoneNumberTest.$invalid }">
+          Valid
+        </td>
+      </tr>
+      <tr>
+        <td ng-class="{ success: form.phoneNumberTest.$pristine, danger: !form.phoneNumberTest.$pristine }">
+          Pristine
+        </td>
+      </tr>
+      <tr>
+        <td ng-class="{ success: form.phoneNumberTest.$dirty }">Dirty</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>
