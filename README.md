@@ -1,5 +1,5 @@
 # angular-libphonenumber - [AngularJS](http://angularjs.org/) input masks for phone numbers
-
+[![Build Status](https://travis-ci.org/cwill747/angular-libphonenumber.svg)](https://travis-ci.org/cwill747/angular-libphonenumber)
 ## Description
 angular-libphonenumber is an angular directive that can be used as an input mask.
 By default, all numbers are formatted in US format, but the format can be set with
