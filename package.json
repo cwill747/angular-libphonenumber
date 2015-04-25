@@ -9,9 +9,7 @@
   },
   "homepage": "https://github.com/cwill747/angular-libphonenumber",
   "scripts": {
-    "test": "gulp test",
-    "postinstall": "bower install",
-    "postupdate": "bower update"
+    "test": "gulp test"
   },
   "keywords": [
     "input",
