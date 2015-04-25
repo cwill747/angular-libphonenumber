@@ -115,7 +115,7 @@ gulp.task('test:e2e', ['webdriver_update', 'serve'], function() {
     .pipe(plugins.exit());
 });
 
-gulp.task('test', ['test:e2e']);
+gulp.task('test', ['test:unit', 'test:e2e']);
 
 function filterNonCodeFiles() {
   return plugins.filter(function(file) {

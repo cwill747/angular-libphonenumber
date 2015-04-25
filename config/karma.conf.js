@@ -6,6 +6,7 @@ module.exports = function(config) {
       'bower_components/jquery/dist/jquery.js',
       'bower_components/angular/angular.js',
       'bower_components/angular-mocks/angular-mocks.js',
+      'dist/libphonenumber.js',
       { //ignore e2e specs
         pattern: 'src/**/*.spec.js',
         included: false,
