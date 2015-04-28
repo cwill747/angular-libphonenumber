@@ -12,7 +12,12 @@ for phone number's, which calls
 to format numbers as you type them. 
 
 ## Installation
+Using [Bower](http://bower.io/):
 
+```
+bower install --save angular-libphonenumber
+```
+Then include it in your angular application:
 ```javascript
 angular.module('myModule', ['cwill747.phonenumber']);
 ```
