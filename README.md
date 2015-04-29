@@ -1,7 +1,9 @@
 # angular-libphonenumber - [AngularJS](http://angularjs.org/) input masks for phone numbers
-[![Build Status](https://travis-ci.org/cwill747/angular-libphonenumber.svg)](https://travis-ci.org/cwill747/angular-libphonenumber)
-[![Coverage Status](https://coveralls.io/repos/cwill747/angular-libphonenumber/badge.svg?branch=master)](https://coveralls.io/r/cwill747/angular-libphonenumber?branch=master)
-[![Code Climate](https://codeclimate.com/github/cwill747/angular-libphonenumber/badges/gpa.svg)](https://codeclimate.com/github/cwill747/angular-libphonenumber)
+[![Bower](https://img.shields.io/bower/v/angular-libphonenumber.svg?style=flat-square)]()
+[![Build Status](http://img.shields.io/travis/cwill747/angular-libphonenumber.svg?style=flat-square)](https://travis-ci.org/cwill747/angular-libphonenumber)
+[![Coverage Status](https://img.shields.io/coveralls/cwill747/angular-libphonenumber.svg?style=flat-square)](https://coveralls.io/r/cwill747/angular-libphonenumber?branch=master)
+[![Code Climate](https://img.shields.io/codeclimate/github/cwill747/angular-libphonenumber.svg?style=flat-square)](https://codeclimate.com/github/cwill747/angular-libphonenumber)
+[![David](https://img.shields.io/david/dev/cwill747/angular-libphonenumber.svg?style=flat-square)]()
 ## Description
 angular-libphonenumber is an angular directive that can be used as an input mask.
 By default, all numbers are formatted in US format, but the format can be set with
