@@ -10,7 +10,7 @@
     "Cameron Will <scwill@us.ibm.com>"
   ],
   "description": "Nathan Hammond's libphonenumber ported to an angular filter",
-  "license": "Apache v2",
+  "license": "Apache-2.0",
   "dependencies": {
     "angular": "^1.2.x"
   },
