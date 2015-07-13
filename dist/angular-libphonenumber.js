@@ -48,7 +48,7 @@ angular.module('cwill747.phonenumber', [])
         this.countryCode = this.countryCode || 'us';
       },
       link: function(scope, element, attrs, ctrl) {
-        scope.$watch('countryCode', function(){
+        scope.$watch('countryCode', function() {
           ctrl.$modelValue = ctrl.$viewValue + ' ';
         });
         function formatter(value) {
