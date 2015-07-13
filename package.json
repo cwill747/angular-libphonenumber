@@ -18,7 +18,7 @@
     "phone"
   ],
   "author": "Cameron Will <scwill@us.ibm.com>",
-  "license": "Apache v2",
+  "license": "Apache-2.0",
   "dependencies": {},
   "devDependencies": {
     "event-stream": "^3.3.0",
