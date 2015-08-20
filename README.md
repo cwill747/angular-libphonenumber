@@ -1,6 +1,6 @@
 # angular-libphonenumber - [AngularJS](http://angularjs.org/) input masks for phone numbers
 
-[![Bower version][bower-image]][bower-url][![Dependencies status][dep-status-image]][dep-status-url][![Build Status][build-image]][build-url][![Coverage Status][coverage-image]][coverage-url][![Code Climate][code-climate-image]][code-climate-url][![Apache license][license-image]][license-url]
+[![Bower version][bower-image]][bower-url] [![Dependencies status][dep-status-image]][dep-status-url] [![Build Status][build-image]][build-url] [![Coverage Status][coverage-image]][coverage-url] [![Code Climate][code-climate-image]][code-climate-url] [![Apache license][license-image]][license-url]
 
 ## Description
 angular-libphonenumber is an angular directive that can be used as an input mask.
@@ -61,5 +61,5 @@ Check out our contributors [here](https://github.com/cwill747/angular-libphonenu
 [coverage-url]: https://coveralls.io/r/cwill747/angular-libphonenumber?branch=master
 [code-climate-image]: https://img.shields.io/codeclimate/github/cwill747/angular-libphonenumber.svg?style=flat-square
 [code-climate-url]: https://codeclimate.com/github/cwill747/angular-libphonenumber
-[license-image]: http://img.shields.io/badge/license-Apachev2-blue.svg
+[license-image]: http://img.shields.io/badge/license-Apachev2-blue.svg?style=flat-square
 [license-url]: http://www.apache.org/licenses/LICENSE-2.0
