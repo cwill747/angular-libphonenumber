@@ -1,6 +1,13 @@
 # angular-libphonenumber - [AngularJS](http://angularjs.org/) input masks for phone numbers
 
-[![Bower version][bower-image]][bower-url] [![Dependencies status][dep-status-image]][dep-status-url] [![Build Status][build-image]][build-url] [![Coverage Status][coverage-image]][coverage-url] [![Code Climate][code-climate-image]][code-climate-url] [![Apache license][license-image]][license-url]
+
+| Info          | Badges        |
+| ------------- | ------------- |
+| Version       | [![Bower version][bower-image]][bower-url]  |
+| License  | [![Apache license][license-image]][license-url]  |
+| Testing  | [![Build Status][build-image]][build-url] [![Coverage Status][coverage-image]][coverage-url] |
+| Quality |  [![Dependencies status][dep-status-image]][dep-status-url]  [![Code Climate][code-climate-image]][code-climate-url] |
+
 
 ## Description
 angular-libphonenumber is an angular directive that can be used as an input mask.
