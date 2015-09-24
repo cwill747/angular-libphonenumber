@@ -39,6 +39,7 @@ angular.module('cwill747.phonenumber', [])
         this.countryCode = this.countryCode || 'us';
       },
       link: function(scope, element, attrs, ctrl) {
+        var el = element[0];
         scope.$watch('countryCode', function() {
           ctrl.$modelValue = ctrl.$viewValue + ' ';
         });
@@ -55,9 +56,29 @@ angular.module('cwill747.phonenumber', [])
           }
 
           var formattedValue = clean(value);
+          if (formattedValue === value){
+            return value;
+          }
+          var start = el.selectionStart;
+          var end = el.selectionEnd + formattedValue.length - value.length;
+
+          if (value.length < formattedValue.length) {
+            // shift the start by the difference
+            start = start + (formattedValue.length - value.length);
+          }
+          if(value.length > formattedValue.length + 1) {
+            start = start - (formattedValue.length - value.length);
+          }
+          // element.val(cleaned) does not behave with
+          // repeated invalid elements
+          ctrl.$setViewValue(formattedValue);
+          ctrl.$render();
+
+          el.setSelectionRange(start, end);
+          //return cleaned;
           return clearValue(formattedValue);
         }
-        
+
         function clean(value) {
           var cleanValue = clearValue(value);
           var formattedValue = '';
@@ -69,23 +90,6 @@ angular.module('cwill747.phonenumber', [])
           }
           return formattedValue;
         }
-        
-        element.on('keyup', function() {
-          var x = ctrl.$viewValue;
-          var y = clean(x);
-          if(x && y) {
-            var start = this.selectionStart;
-            var end = this.selectionEnd + y.length - x.length;
-            if(x.length < y.length) {
-              start = start + (y.length - x.length);
-            }
-            if(x !== y) {
-              ctrl.$setViewValue(y);
-              ctrl.$render();
-            }
-            this.setSelectionRange(start, end);
-          }
-        });
 
         function validator(value) {
           var isValidForRegion = false;

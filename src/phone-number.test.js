@@ -85,12 +85,12 @@ describe('phonenumber', function() {
     var model = input.controller('ngModel');
 
     var tests = [
-      {value:'@', viewValue:'', modelValue:''},
-      {value:'2-', viewValue:'2', modelValue:'2'},
-      {value:'23a', viewValue:'23', modelValue:'23'},
-      {value:'23_34', viewValue:'233-4', modelValue:'2334'},
-      {value:'23346!', viewValue:'233-46', modelValue:'23346'},
-      {value:'23346!32400', viewValue:'(233) 463-2400', modelValue:'2334632400'},
+      {value: '@', viewValue: '', modelValue: ''},
+      {value: '2-', viewValue: '2', modelValue: '2'},
+      {value: '23a', viewValue: '23', modelValue: '23'},
+      {value: '23_34', viewValue: '233-4', modelValue: '2334'},
+      {value: '23346!', viewValue: '233-46', modelValue: '23346'},
+      {value: '23346!32400', viewValue: '(233) 463-2400', modelValue: '2334632400'},
     ];
 
     tests.forEach(function(test) {
