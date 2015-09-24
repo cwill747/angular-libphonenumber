@@ -54,20 +54,38 @@ angular.module('cwill747.phonenumber', [])
             return value;
           }
 
+          var formattedValue = clean(value);
+          return clearValue(formattedValue);
+        }
+        
+        function clean(value) {
           var cleanValue = clearValue(value);
           var formattedValue = '';
-          if (cleanValue.length > 1) {
+          if (cleanValue && cleanValue.length > 1) {
             formattedValue = applyPhoneMask(cleanValue, scope.countryCode);
           }
           else {
             formattedValue = cleanValue;
           }
-          if (ctrl.$viewValue !== formattedValue) {
-            ctrl.$setViewValue(formattedValue);
-            ctrl.$render();
-          }
-          return clearValue(formattedValue);
+          return formattedValue;
         }
+        
+        element.on('keyup', function() {
+          var x = ctrl.$viewValue;
+          var y = clean(x);
+          if(x && y) {
+            var start = this.selectionStart;
+            var end = this.selectionEnd + y.length - x.length;
+            if(x.length < y.length) {
+              start = start + (y.length - x.length);
+            }
+            if(x !== y) {
+              ctrl.$setViewValue(y);
+              ctrl.$render();
+            }
+            this.setSelectionRange(start, end);
+          }
+        });
 
         function validator(value) {
           var isValidForRegion = false;
