@@ -4,7 +4,7 @@
     "dist/libphonenumber.js",
     "dist/angular-libphonenumber.min.js"
   ],
-  "version": "0.0.5",
+  "version": "0.0.7",
   "homepage": "https://github.com/cwill747/angular-libphonenumber",
   "authors": [
     "Cameron Will <scwill@us.ibm.com>"
