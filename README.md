@@ -31,6 +31,21 @@ Then include it in your angular application:
 angular.module('myModule', ['cwill747.phonenumber']);
 ```
 
+## How to Use
+
+- You need to get the user's country code from somewhere. Where you do that is up to you (setting, 
+local storage, angular-translate, or just another input box):
+
+```html
+<input type="text" ng-model="countrycode" />
+```
+
+- Then you just apply the input mask to any input box:
+
+```html
+<input type="text" ng-model="phoneNumber" phone-number country-code="countrycode" />
+```
+
 ## Support
 If you are having any questions or issues getting things to work, you can:
 
