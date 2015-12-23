@@ -69,10 +69,8 @@ Check out our contributors [here](https://github.com/cwill747/angular-libphonenu
 * Build the whole project: `gulp` - this will run `jshint`, `test`, and `build` targets
 
 ### Release
-* Bump up version number in `package.json` or by running [npm version](https://docs.npmjs.com/cli/version)
-* Commit the version change with the following message: `chore(release): [version number]`
-* tag
-* push changes and a tag (`git push --tags`)
+* Use GitHub's release tool to draft and publish a release. I like the format better than
+changelogs.
 
 
 [bower-image]: https://img.shields.io/bower/v/angular-libphonenumber.svg?style=flat-square
