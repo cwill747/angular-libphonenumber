@@ -65,7 +65,7 @@ angular.module('cwill747.phonenumber', [])
           }
 
           var formattedValue = clean(value);
-          if (formattedValue === value){
+          if (formattedValue === value) {
             return value;
           }
           var start = el.selectionStart;
@@ -75,7 +75,7 @@ angular.module('cwill747.phonenumber', [])
             // shift the start by the difference
             start = start + (formattedValue.length - value.length);
           }
-          if(value.length > formattedValue.length + 1) {
+          if (value.length > formattedValue.length + 1) {
             start = start - (formattedValue.length - value.length);
           }
           // element.val(cleaned) does not behave with
