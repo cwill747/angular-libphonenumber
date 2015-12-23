@@ -76,11 +76,11 @@ Check out our contributors [here](https://github.com/cwill747/angular-libphonenu
 
 
 [bower-image]: https://img.shields.io/bower/v/angular-libphonenumber.svg?style=flat-square
-[bower-url]: http://bower.io/search/?q=angulartics-libphonenumber
+[bower-url]: http://bower.io/search/?q=angular-libphonenumber
 [build-image]: http://img.shields.io/travis/cwill747/angular-libphonenumber.svg?style=flat-square
 [build-url]: https://travis-ci.org/cwill747/angular-libphonenumber
 [dep-status-image]: https://img.shields.io/david/cwill747/angular-libphonenumber.svg?style=flat-square
-[dep-status-url]: https://david-dm.org/cwill747/angulartics-libphonenumber
+[dep-status-url]: https://david-dm.org/cwill747/angular-libphonenumber
 [coverage-image]: https://img.shields.io/coveralls/cwill747/angular-libphonenumber.svg?style=flat-square
 [coverage-url]: https://coveralls.io/r/cwill747/angular-libphonenumber?branch=master
 [code-climate-image]: https://img.shields.io/codeclimate/github/cwill747/angular-libphonenumber.svg?style=flat-square
