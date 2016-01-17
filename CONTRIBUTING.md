@@ -25,10 +25,6 @@ Before you submit your Pull Request (PR) consider the following guidelines:
 
 * Search [GitHub](https://github.com/cwill747/angular-libphonenumber/pulls) for an open or closed PR
   that relates to your submission. You don't want to duplicate effort.
-* Please sign our [Contributor License Agreement (CLA)](CLA.md) before sending PRs.
-  We cannot accept code without this. You must include your acceptance of the CLA when submitting all pull requests.
-  If You submit a Pull Request against an IBM repository on GitHub 
-  You must include in the Pull Request a statement of Your acceptance of this CLA.
 * Make your changes in a new git branch:
 
      ```shell
@@ -141,7 +137,13 @@ The body should include the motivation for the change and contrast this with pre
 
 ### Footer
 The footer should contain any information about **Breaking Changes** and is also the place to
-reference GitHub issues that this commit **Closes**.
+reference GitHub issues that this commit **Closes**. You must also, if your first time contributing 
+to this repository, include a signature that you have read and understood the 
+[Developer Certificate of Origin (DCO)](DCO.txt). It should look like this:
+
+```
+DCO 1.1 Signed-off-by: Random J Developer <random@developer.org>
+```
 
 
 [plunker]: http://plnkr.co/edit
