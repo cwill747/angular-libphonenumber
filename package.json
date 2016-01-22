@@ -1,6 +1,6 @@
 {
   "name": "angular-libphonenumber",
-  "version": "0.0.5",
+  "version": "0.0.9",
   "description": "Nathan Hammond's libphonenumber ported to an angular filter",
   "main": "dist/angular-libphonenumber.min.js",
   "repository": {

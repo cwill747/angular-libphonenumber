@@ -32,7 +32,10 @@ Before you submit your Pull Request (PR) consider the following guidelines:
      ```
 
 * Create your patch, **including appropriate test cases**.
-* Run the full test suite, specified in the readme
+* Run the full test suite and build the dist files
+    ```shell
+    gulp
+    ```
 * Commit your changes using a descriptive commit message that follows our
   [commit message conventions](#commit). Adherence to these conventions
   is necessary because release notes are automatically generated from these messages.
@@ -41,6 +44,7 @@ Before you submit your Pull Request (PR) consider the following guidelines:
      git commit -a
      ```
   Note: the optional commit `-a` command line option will automatically "add" and "rm" edited files.
+  Make sure to check in the dist/* files too!
 
 * Push your branch to GitHub:
 
