@@ -88,7 +88,7 @@ angular.module('cwill747.phonenumber', [])
           else {
             formattedValue = cleanValue;
           }
-          return formattedValue;
+          return formattedValue.trim();
         }
 
         function validator(value) {
