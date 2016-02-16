@@ -26,6 +26,21 @@ Using [Bower](http://bower.io/):
 ```
 bower install --save angular-libphonenumber
 ```
+
+You then must decide what version of libphonenumber you want. There are two included, and you must
+include _one_ of them in your application *before* angular-libphonenumber:
+- dist/libphonenumber.js - only includes the libphonenumber code needed for typeahead to work
+- dist/libphonenumber.full.js - includes all libphonenumber functionality _including_ typeahead
+
+```html
+<!-- Use either -->
+<script src="./<path_to_bower_components>/angular-libphonenumber/dist/libphonenumber.full.js" />
+<!-- OR -->
+<script src="./<path_to_bower_components>/angular-libphonenumber/dist/libphonenumber.js" />
+<!-- THEN -->
+<script src="./<path_to_bower_components>/angular-libphonenumber/dist/angular-libphonenumber.min.js" />
+```
+
 Then include it in your angular application:
 ```javascript
 angular.module('myModule', ['cwill747.phonenumber']);

@@ -1,7 +1,6 @@
 {
   "name": "angular-libphonenumber",
   "main": [
-    "dist/libphonenumber.js",
     "dist/angular-libphonenumber.min.js"
   ],
   "version": "0.0.9",

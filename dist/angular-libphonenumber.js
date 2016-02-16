@@ -1,7 +1,7 @@
 /**
  * angular-libphonenumber
  * Nathan Hammond's libphonenumber ported to an angular filter
- * @version v0.0.5
+ * @version v0.0.9
  * @link https://github.com/cwill747/angular-libphonenumber
  * @license Apache-2.0
  */
