@@ -23,6 +23,8 @@ chances of your issue being dealt with quickly:
 * **Suggest a Fix** - if you can't fix the bug yourself, perhaps you can point to what might be
   causing the problem (line of code or commit)
 
+Here's a plnkr you can fork from if you need a place to start - https://plnkr.co/k32xZLSRS47w6TW3auAF?p=info
+
 ### <a name="submit-pr"></a> Submitting a Pull Request (PR)
 Before you submit your Pull Request (PR) consider the following guidelines:
 
