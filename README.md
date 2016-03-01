@@ -12,13 +12,13 @@
 ## Description
 angular-libphonenumber is an angular directive that can be used as an input mask.
 By default, all numbers are formatted in US format, but the format can be set with
-the `country-code` descriptor. It uses 
+the `country-code` descriptor. It uses
 [nathanhammond/libphonenumber](https://github.com/nathanhammond/libphonenumber) as a formatter
-for phone number's, which calls 
+for phone number's, which calls
 [Google's libphonenumber](https://github.com/googlei18n/libphonenumber)
-to format numbers as you type them. 
+to format numbers as you type them.
 
-View a [demo here](https://rawgit.com/cwill747/angular-libphonenumber/master/demo/index.html)
+View a [demo here](https://run.plnkr.co/plunks/k32xZLSRS47w6TW3auAF/)
 
 ## Installation
 Using [Bower](http://bower.io/):
@@ -48,7 +48,7 @@ angular.module('myModule', ['cwill747.phonenumber']);
 
 ## How to Use
 
-- You need to get the user's country code from somewhere. Where you do that is up to you (setting, 
+- You need to get the user's country code from somewhere. Where you do that is up to you (setting,
 local storage, angular-translate, or just another input box):
 
 ```html
