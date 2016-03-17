@@ -90,7 +90,7 @@ changelogs.
 
 [bower-image]: https://img.shields.io/bower/v/angular-libphonenumber.svg?style=flat-square
 [bower-url]: http://bower.io/search/?q=angular-libphonenumber
-[npm-image]: https://img.shields.io/npm/v/angular-libphonenumber.svg
+[npm-image]: https://img.shields.io/npm/v/angular-libphonenumber.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/angular-libphonenumber
 [build-image]: http://img.shields.io/travis/cwill747/angular-libphonenumber.svg?style=flat-square
 [build-url]: https://travis-ci.org/cwill747/angular-libphonenumber
