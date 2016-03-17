@@ -3,7 +3,7 @@
 
 | Info          | Badges        |
 | ------------- | ------------- |
-| Version       | [![Bower version][bower-image]][bower-url]  |
+| Version       | [![Bower version][bower-image]][bower-url] [![NPM version][npm-image]][npm-url]  |
 | License  | [![Apache license][license-image]][license-url]  |
 | Testing  | [![Build Status][build-image]][build-url] [![Coverage Status][coverage-image]][coverage-url] |
 | Quality |  [![Dependencies status][dep-status-image]][dep-status-url]  [![Code Climate][code-climate-image]][code-climate-url] |
@@ -90,6 +90,8 @@ changelogs.
 
 [bower-image]: https://img.shields.io/bower/v/angular-libphonenumber.svg?style=flat-square
 [bower-url]: http://bower.io/search/?q=angular-libphonenumber
+[npm-image]: https://img.shields.io/npm/v/angular-libphonenumber.svg
+[npm-url]: https://www.npmjs.com/package/angular-libphonenumber
 [build-image]: http://img.shields.io/travis/cwill747/angular-libphonenumber.svg?style=flat-square
 [build-url]: https://travis-ci.org/cwill747/angular-libphonenumber
 [dep-status-image]: https://img.shields.io/david/cwill747/angular-libphonenumber.svg?style=flat-square
