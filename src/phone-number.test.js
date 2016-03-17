@@ -90,7 +90,7 @@ describe('phonenumber', function() {
       {value: '23a', viewValue: '23', modelValue: '23'},
       {value: '23_34', viewValue: '233-4', modelValue: '2334'},
       {value: '23346!', viewValue: '233-46', modelValue: '23346'},
-      {value: '23346!32400', viewValue: '(233) 463-2400', modelValue: '2334632400'},
+      {value: '23346!32400', viewValue: '(233) 463-2400', modelValue: '2334632400'}
     ];
 
     tests.forEach(function(test) {

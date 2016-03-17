@@ -6,7 +6,11 @@ var gulp = require('gulp'),
   karma = require('karma').server,
   plugins = require('gulp-load-plugins')({
     config: path.join(__dirname, 'package.json')
-  });
+  }),
+  express = require('express'),
+  protractor = require('gulp-protractor').protractor;
+
+
 
 var noop = function() {
 };
@@ -29,7 +33,7 @@ var pkg = require('./package.json'),
     ''
   ].join('\n');
 
-var path = {
+var paths = {
   src: {
     files: ['src/**/*.js'],
     e2e: ['src/**/*.spec.js']
@@ -62,7 +66,7 @@ function customBuild(files) {
 gulp.task('build', customBuild());
 
 gulp.task('lint', function() {
-  gulp.src(path.src.files)
+  gulp.src(paths.src.files)
     .pipe(filterNonCodeFiles())
     .pipe(jshint())                           // hint (optional)
     .pipe(jscs())                             // enforce style guide
@@ -72,11 +76,10 @@ gulp.task('lint', function() {
 });
 
 gulp.task('default', ['lint', 'test', 'build'], function() {
-  gulp.watch(path.src.files, ['lint', 'build']);
+  gulp.watch(paths.src.files, ['lint', 'build']);
 });
 
 gulp.task('serve', ['build'], function() {
-  var express = require('express');
   var server = express();
 
   server.use(express.static('./'));
@@ -88,7 +91,7 @@ gulp.task('serve', ['build'], function() {
 gulp.task('test:unit', function(done) {
   var karmaConfig = {
     singleRun: true,
-    configFile: __dirname + '/config/karma.conf.js'
+    configFile: path.join(__dirname, 'config/karma.conf.js')
   };
 
   karma.start(karmaConfig, done);
@@ -98,7 +101,7 @@ gulp.task('test-watch', function(done) {
   var karmaConfig = {
     singleRun: false,
     autoWatch: true,
-    configFile: __dirname + '/config/karma.conf.js'
+    configFile: path.join(__dirname, 'config/karma.conf.js')
   };
 
   karma.start(karmaConfig, done);
@@ -107,9 +110,7 @@ gulp.task('test-watch', function(done) {
 gulp.task('webdriver_update', require('gulp-protractor').webdriver_update);
 
 gulp.task('test:e2e', ['webdriver_update', 'serve'], function() {
-  var protractor = require('gulp-protractor').protractor;
-
-  gulp.src(path.src.e2e)
+  gulp.src(paths.src.e2e)
     .pipe(protractor({
       configFile: 'config/protractor.conf.js'
     }))

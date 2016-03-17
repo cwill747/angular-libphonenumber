@@ -87,14 +87,14 @@ describe('phoneValidator', function() {
 
     it('should apply a phone number mask while the user is typing:', function() {
       var input = element(by.id('phoneNumberTest'));
-      var value = element(by.id('phoneNumberTest'));
+      var value = input;
       element(by.id('countrycode')).sendKeys('us');
       runTests(input, value);
     });
 
     it('should allow the user to move the cursor around and edit the number', function() {
       var input = element(by.id('phoneNumberTest'));
-      var value = element(by.id('phoneNumberTest'));
+      var value = input;
       element(by.id('countrycode')).sendKeys('us');
       cursorTests(input, value);
     });
