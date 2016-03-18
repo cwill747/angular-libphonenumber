@@ -41,7 +41,8 @@ angular.module('cwill747.phonenumber', [])
       restrict: 'A',
       require: '?ngModel',
       scope: {
-        countryCode: '='
+        countryCode: '=',
+        nonFormatted: '=?'
       },
       controllerAs: '',
       controller: function() {
@@ -61,6 +62,7 @@ angular.module('cwill747.phonenumber', [])
 
         function parser(value) {
           if (ctrl.$isEmpty(value)) {
+            scope.nonFormatted = '';
             return value;
           }
 
@@ -90,6 +92,7 @@ angular.module('cwill747.phonenumber', [])
 
         function clean(value) {
           var cleanValue = clearValue(value);
+          scope.nonFormatted = cleanValue;
           var formattedValue = '';
           if (cleanValue && cleanValue.length > 1) {
             formattedValue = applyPhoneMask(cleanValue, scope.countryCode);

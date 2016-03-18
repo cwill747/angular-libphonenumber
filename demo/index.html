@@ -12,6 +12,7 @@
     angular.module('demo', ['cwill747.phonenumber']);
     function ctrl($scope) {
       $scope.initializedPhoneNumber = '3133536767';
+      $scope.nonFormattedPhoneNumber = '';
     }
   </script>
 </head>
@@ -23,8 +24,9 @@
   <label for="phoneNumberTest">Phone Number:</label>
 
   <input id="phoneNumberTest" type="text" name="phoneNumberTest" ng-model="phoneNumber" phone-number
-         country-code="countrycode"><br>
-  <span id="phone-value">{{phoneNumber}}</span> - {{form.phoneNumberTest.$valid}}<br>
+         country-code="countrycode" non-formatted="nonFormattedPhoneNumber"><br>
+  <span id="phone-value">{{phoneNumber}}</span> - {{form.phoneNumberTest.$valid}}<br />
+  <span>Non-Formatted: <span id="phone-nonformatted">{{nonFormattedPhoneNumber}}</span></span> <br />
   <div class="row">
     <div class="col-xs-3">
       <h3>Phone Number</h3>
