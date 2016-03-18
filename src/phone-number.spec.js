@@ -11,6 +11,8 @@ describe('phoneValidator', function() {
   describe('phone-number:', function() {
     var runTests = function(input, nonFormatted) {
       var BS = protractor.Key.BACK_SPACE;
+      var LK = protractor.Key.ARROW_LEFT;
+      var DL = protractor.Key.DELETE;
       var tests = [
         {key: '1', viewValue: '1', modelValue: '1'},
         {key: '2', viewValue: '12', modelValue: '12'},
@@ -33,21 +35,7 @@ describe('phoneValidator', function() {
         {key: BS, viewValue: '1 23', modelValue: '123'},
         {key: BS, viewValue: '12', modelValue: '12'},
         {key: BS, viewValue: '1', modelValue: '1'},
-        {key: BS, viewValue: '', modelValue: ''}
-      ];
-
-      for (var i = 0; i < tests.length; i++) {
-        input.sendKeys(tests[i].key);
-        expect(input.getAttribute('value')).toEqual(tests[i].viewValue);
-        expect(nonFormatted.getText()).toEqual(tests[i].modelValue);
-      }
-    };
-
-    var cursorTests = function(input, nonFormatted) {
-      var BS = protractor.Key.BACK_SPACE;
-      var LK = protractor.Key.ARROW_LEFT;
-      var DL = protractor.Key.DELETE;
-      var tests = [
+        {key: BS, viewValue: '', modelValue: ''},
         {key: '1', viewValue: '1', modelValue: '1'},
         {key: '2', viewValue: '12', modelValue: '12'},
         {key: '3', viewValue: '1 23', modelValue: '123'},
@@ -75,7 +63,7 @@ describe('phoneValidator', function() {
         {key: '1', viewValue: '1 234-167-8991', modelValue: '12341678991'},  // 1 234-1|67-8991
         {key: LK, viewValue: '1 234-167-8991', modelValue: '12341678991'},  // 1 234-|167-8991
         {key: BS, viewValue: '1 234-167-8991', modelValue: '12341678991'},  // 1 234-|167-8991
-        {key: DL, viewValue: '1 234-678-991', modelValue: '1234678991'}  // 1 234-|678-991
+        {key: DL, viewValue: '1 234-678-991', modelValue: '1234678991'} // 1 234-|678-991
       ];
 
       for (var i = 0; i < tests.length; i++) {
@@ -90,17 +78,6 @@ describe('phoneValidator', function() {
       var nonFormatted = element(by.id('phone-nonformatted'));
       element(by.id('countrycode')).sendKeys('us');
       runTests(input, nonFormatted);
-      cursorTests(input, nonFormatted);
     });
-
-    //it('should apply a phone number mask in a model with default value:', function () {
-    //  var input = element(by.id('init-us-phone-input')),
-    //    value = element(by.id('init-us-phone-value'));
-    //
-    //  expect(input.getAttribute('value')).toEqual('(313) 353-6767');
-    //  input.clear();
-    //
-    //  runTests(input, value);
-    //});
   });
 });
