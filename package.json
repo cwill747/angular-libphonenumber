@@ -1,6 +1,6 @@
 {
   "name": "angular-libphonenumber",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Nathan Hammond's libphonenumber ported to an angular filter",
   "main": "dist/angular-libphonenumber.min.js",
   "repository": {
@@ -24,7 +24,7 @@
     "event-stream": "3.3.0",
     "express": "4.12.3",
     "gulp": "^3.9.1",
-    "gulp-bump": "^1.0.0",
+    "gulp-bump": "^2.0.1",
     "gulp-changed": "1.2.1",
     "gulp-concat": "^2.6.0",
     "gulp-exit": "0.0.2",

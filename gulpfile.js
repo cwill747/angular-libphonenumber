@@ -12,6 +12,7 @@ var gulp = require('gulp'),
 
 
 
+
 var noop = function() {
 };
 
@@ -147,12 +148,7 @@ function inc(importance) {
     // save it back to filesystem
     .pipe(gulp.dest('./'))
     // commit the changed version number
-    .pipe(plugins.git.commit('chore: bump package version'))
-
-    // read only one file to get the version number
-    .pipe(plugins.filter('package.json'))
-    // **tag it in the repository**
-    .pipe(plugins.tagVersion());
+    //.pipe(plugins.git.commit('chore: bump package version'))
 }
 
 gulp.task('patch', function() {
