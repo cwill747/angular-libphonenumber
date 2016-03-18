@@ -99,4 +99,40 @@ describe('phonenumber', function() {
       expect(model.$modelValue).toBe(test.modelValue);
     });
   });
+
+  it('should strip out any garbage characters from the model and the view', function() {
+    var input = TestUtil.compile('<input type="text" ng-model="model" phone-number ' +
+      'country-code="us">');
+    var model = input.controller('ngModel');
+
+    input.val('-----()----9sDF_').triggerHandler('input');
+    expect(model.$viewValue).toBe('9');
+    expect(model.$modelValue).toBe('9');
+
+  });
+});
+
+describe('mock libphonenumber', function() {
+  var $log;
+  var $window;
+  beforeEach(module('cwill747.phonenumber'));
+
+  beforeEach(inject(function(_$log_, _$window_) {
+    $log = _$log_;
+    $window = _$window_;
+    $window.phoneUtils = {
+      formatAsTyped: function() {
+        throw "ERROR";
+      }
+    }
+  }));
+
+  it('should error if libphonenumber throws', function() {
+
+    var input = TestUtil.compile('<input type="text" ng-model="model" phone-number ' +
+      'country-code="us">', {
+      model: '3011201034'
+    });
+    expect($log.debug.logs[1][0]).toEqual('ERROR');
+  });
 });

@@ -1,7 +1,7 @@
 /**
  * angular-libphonenumber
  * Nathan Hammond's libphonenumber ported to an angular filter
- * @version v1.0.0
+ * @version v1.1.0
  * @link https://github.com/cwill747/angular-libphonenumber
  * @license Apache-2.0
  */
@@ -16,9 +16,9 @@
  * filters a user typed phone number into a formatted number
  *
  */
-/* global phoneUtils, angular */
+/* global angular */
 angular.module('cwill747.phonenumber', [])
-  .directive('phoneNumber', ['$log', function($log) {
+  .directive('phoneNumber', ['$log', '$window', function($log, $window) {
     function clearValue(value) {
       if (!value) {
         return value;
@@ -29,7 +29,7 @@ angular.module('cwill747.phonenumber', [])
     function applyPhoneMask(value, region) {
       var phoneMask = value;
       try {
-        phoneMask = phoneUtils.formatAsTyped(value, region);
+        phoneMask = $window.phoneUtils.formatAsTyped(value, region);
       }
       catch (err) {
         $log.debug(err);
@@ -106,7 +106,7 @@ angular.module('cwill747.phonenumber', [])
         function validator(value) {
           var isValidForRegion = false;
           try {
-            isValidForRegion = phoneUtils.isValidNumberForRegion(value, scope.countryCode);
+            isValidForRegion = $window.phoneUtils.isValidNumberForRegion(value, scope.countryCode);
           }
           catch (err) {
             $log.debug(err);

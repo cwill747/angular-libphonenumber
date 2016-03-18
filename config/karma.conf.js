@@ -18,7 +18,7 @@ module.exports = function(config) {
     port: 9876,
     reporters: ['progress', 'coverage'],
     preprocessors: {
-      'src/**/*.js': ['coverage']
+      'src/phone-number.js': ['coverage']
     },
     coverageReporter: {
       dir: 'coverage',

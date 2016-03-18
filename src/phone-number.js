@@ -7,9 +7,9 @@
  * filters a user typed phone number into a formatted number
  *
  */
-/* global phoneUtils, angular */
+/* global angular */
 angular.module('cwill747.phonenumber', [])
-  .directive('phoneNumber', ['$log', function($log) {
+  .directive('phoneNumber', ['$log', '$window', function($log, $window) {
     function clearValue(value) {
       if (!value) {
         return value;
@@ -20,7 +20,7 @@ angular.module('cwill747.phonenumber', [])
     function applyPhoneMask(value, region) {
       var phoneMask = value;
       try {
-        phoneMask = phoneUtils.formatAsTyped(value, region);
+        phoneMask = $window.phoneUtils.formatAsTyped(value, region);
       }
       catch (err) {
         $log.debug(err);
@@ -97,7 +97,7 @@ angular.module('cwill747.phonenumber', [])
         function validator(value) {
           var isValidForRegion = false;
           try {
-            isValidForRegion = phoneUtils.isValidNumberForRegion(value, scope.countryCode);
+            isValidForRegion = $window.phoneUtils.isValidNumberForRegion(value, scope.countryCode);
           }
           catch (err) {
             $log.debug(err);
