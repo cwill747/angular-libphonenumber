@@ -70,7 +70,7 @@ Project's issue on GitHub should be used discuss bugs and features.
 
 ## Contributing to the project
 
-We welcome any contributions to the project. Please check the [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
+We welcome any contributions to the project. Please check the [CONTRIBUTING.md](.github/CONTRIBUTING.md) for contribution guidelines.
 
 Check out our contributors [here](https://github.com/cwill747/angular-libphonenumber/graphs/contributors)
 
