@@ -44,6 +44,20 @@ angular.module('cwill747.phonenumber', [])
         scope.$watch('countryCode', function() {
           ctrl.$modelValue = ctrl.$viewValue + ' ';
         });
+
+        function clean(value) {
+          var cleanValue = clearValue(value);
+          scope.nonFormatted = cleanValue;
+          var formattedValue = '';
+          if (cleanValue && cleanValue.length > 1) {
+            formattedValue = applyPhoneMask(cleanValue, scope.countryCode);
+          }
+          else {
+            formattedValue = cleanValue;
+          }
+          return formattedValue.trim();
+        }
+
         function formatter(value) {
           if (ctrl.$isEmpty(value)) {
             return value;
@@ -79,19 +93,6 @@ angular.module('cwill747.phonenumber', [])
           el.setSelectionRange(start, end);
           //return cleaned;
           return clearValue(formattedValue);
-        }
-
-        function clean(value) {
-          var cleanValue = clearValue(value);
-          scope.nonFormatted = cleanValue;
-          var formattedValue = '';
-          if (cleanValue && cleanValue.length > 1) {
-            formattedValue = applyPhoneMask(cleanValue, scope.countryCode);
-          }
-          else {
-            formattedValue = cleanValue;
-          }
-          return formattedValue.trim();
         }
 
         function validator(value) {

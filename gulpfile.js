@@ -6,11 +6,9 @@ var plugins = require('gulp-load-plugins')({
   config: path.join(__dirname, 'package.json')
 });
 
-var noop = function() {
-};
-
-var pkg = require('./package.json'),
-  header = ['/**',
+var noop = function() {};
+var pkg = require('./package.json');
+var header = ['/**',
     ' * <%= pkg.name %>',
     ' * <%= pkg.description %>',
     ' * @version v<%= pkg.version %>',
@@ -20,20 +18,18 @@ var pkg = require('./package.json'),
     '(function (angular) {',
     '',
     ''
-  ].join('\n'),
-  footer = [
+  ].join('\n');
+var footer = [
     '',
     '})(angular);',
     ''
   ].join('\n');
-
 var paths = {
   src: {
     files: ['src/**/*.js'],
     e2e: ['src/**/*.spec.js']
   }
 };
-
 var commonBuild = {
   libs: [],
   files: [
@@ -41,7 +37,13 @@ var commonBuild = {
   ]
 };
 
-function customBuild(files) {
+function filterNonCodeFiles() {
+  return plugins.filter(function(file) {
+    return !/\.json$|\.spec\.js$|\.test\.js$/.test(file.path);
+  });
+}
+
+function customBuild() {
   var buildFilename = 'angular-libphonenumber';
 
   return function() {
@@ -101,7 +103,9 @@ gulp.task('test-watch', function(done) {
   karma.start(karmaConfig, done);
 });
 
+// jscs:disable requireCamelCaseOrUpperCaseIdentifiers
 gulp.task('webdriver_update', require('gulp-protractor').webdriver_update);
+// jscs:enable requireCamelCaseOrUpperCaseIdentifiers
 
 gulp.task('test:e2e', ['webdriver_update', 'serve'], function() {
   gulp.src(paths.src.e2e)
@@ -112,12 +116,6 @@ gulp.task('test:e2e', ['webdriver_update', 'serve'], function() {
 });
 
 gulp.task('test', ['test:unit', 'test:e2e']);
-
-function filterNonCodeFiles() {
-  return plugins.filter(function(file) {
-    return !/\.json$|\.spec\.js$|\.test\.js$/.test(file.path);
-  });
-}
 
 /**
  * Bumping version number and tagging the repository with it.
