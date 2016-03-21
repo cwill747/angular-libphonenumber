@@ -1,17 +1,10 @@
-var gulp = require('gulp'),
-  path = require('path'),
-  jshint = require('gulp-jshint'),
-  jscs = require('gulp-jscs'),
-  stylish = require('gulp-jscs-stylish'),
-  karma = require('karma').server,
-  plugins = require('gulp-load-plugins')({
-    config: path.join(__dirname, 'package.json')
-  }),
-  express = require('express'),
-  protractor = require('gulp-protractor').protractor;
-
-
-
+var express = require('express');
+var gulp = require('gulp');
+var karma = require('karma').server;
+var path = require('path');
+var plugins = require('gulp-load-plugins')({
+  config: path.join(__dirname, 'package.json')
+});
 
 var noop = function() {
 };
@@ -69,11 +62,11 @@ gulp.task('build', customBuild());
 gulp.task('lint', function() {
   gulp.src(paths.src.files)
     .pipe(filterNonCodeFiles())
-    .pipe(jshint())                           // hint (optional)
-    .pipe(jscs())                             // enforce style guide
-    .on('error', noop)                        // don't stop on error
-    .pipe(stylish.combineWithHintResults())   // combine with jshint results
-    .pipe(jshint.reporter('jshint-stylish'));
+    .pipe(plugins.jshint())                               // hint (optional)
+    .pipe(plugins.jscs())                                 // enforce style guide
+    .on('error', noop)                                    // don't stop on error
+    .pipe(plugins.jscsStylish.combineWithHintResults())   // combine with jshint results
+    .pipe(plugins.jshint.reporter('jshint-stylish'));
 });
 
 gulp.task('default', ['lint', 'test', 'build'], function() {
@@ -112,7 +105,7 @@ gulp.task('webdriver_update', require('gulp-protractor').webdriver_update);
 
 gulp.task('test:e2e', ['webdriver_update', 'serve'], function() {
   gulp.src(paths.src.e2e)
-    .pipe(protractor({
+    .pipe(plugins.protractor.protractor({
       configFile: 'config/protractor.conf.js'
     }))
     .pipe(plugins.exit());
@@ -146,9 +139,9 @@ function inc(importance) {
     // bump the version number in those files
     .pipe(plugins.bump({type: importance}))
     // save it back to filesystem
-    .pipe(gulp.dest('./'))
-    // commit the changed version number
-    //.pipe(plugins.git.commit('chore: bump package version'))
+    .pipe(gulp.dest('./'));
+  // commit the changed version number
+  // .pipe(plugins.git.commit('chore: bump package version'))
 }
 
 gulp.task('patch', function() {
