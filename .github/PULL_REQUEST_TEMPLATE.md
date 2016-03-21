@@ -32,5 +32,6 @@
 - [ ] My change requires a change to the documentation.
 - [ ] I have updated the documentation accordingly.
 - [ ] I have read the **CONTRIBUTING** document.
+- [ ] I have submitted a CLA
 - [ ] I have added tests to cover my changes.
 - [ ] All new and existing tests passed.
