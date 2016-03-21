@@ -1,0 +1,5 @@
+jscs:
+  enabled: true
+  config_file: .jscsrc
+javascript:
+  config_file: .jshintrc
