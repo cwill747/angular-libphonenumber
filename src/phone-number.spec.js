@@ -1,4 +1,4 @@
-/* global describe, it, expect, element, browser, by, protractor */
+/* global element, browser, by, protractor */
 describe('phoneValidator', function() {
   beforeEach(function() {
     browser.get('/demo/index.html');

@@ -35,14 +35,16 @@ module.exports = function(config) {
     singleRun: false,
     browsers: ['Chrome'],
     customLaunchers: {
+      // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
       Chrome_travis_ci: {
         base: 'Chrome',
         flags: ['--no-sandbox']
       }
+      // jscs:enable requireCamelCaseOrUpperCaseIdentifiers
     }
   };
 
-  if(process.env.TRAVIS){
+  if (process.env.TRAVIS) {
     configuration.browsers = ['Chrome_travis_ci'];
 
     configuration.reporters.push('coveralls');

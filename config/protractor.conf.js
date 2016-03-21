@@ -6,7 +6,7 @@ var config = {
   baseUrl: 'http://localhost:8000/demo'
 };
 
-if(process.env.TRAVIS){
+if (process.env.TRAVIS) {
   config.allScriptsTimeout = 110000;
   config.jasmineNodeOpts = {
     defaultTimeoutInterval: 100000

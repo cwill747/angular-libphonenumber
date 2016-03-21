@@ -1,6 +1,7 @@
 {
   "node": true,
   "browser": true,
+  "jasmine": true,
   "esnext": true,
   "bitwise": false,
   "camelcase": false,
@@ -22,20 +23,11 @@
     "angular": true
   },
   "predef": [
-    "define",
-    "require",
-    "exports",
-    "module",
-    "describe",
-    "before",
-    "beforeEach",
-    "after",
-    "afterEach",
-    "it",
+    "inject",
     "StringMask",
     "BrV"
   ],
-  "indent": 4,
+  "indent": 2,
   "maxlen": 120,
   "devel": false,
   "noempty": true
