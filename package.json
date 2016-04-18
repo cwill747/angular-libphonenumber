@@ -34,7 +34,7 @@
     "gulp-git": "^1.6.0",
     "gulp-header": "1.2.2",
     "gulp-jscs": "^3.0.2",
-    "gulp-jscs-stylish": "1.1.0",
+    "gulp-jscs-stylish": "1.4.0",
     "gulp-jshint": "1.10.0",
     "gulp-load-plugins": "0.10.0",
     "gulp-protractor": "2.2.0",
