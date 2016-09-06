@@ -32,7 +32,7 @@
     "gulp-filter": "^3.0.1",
     "gulp-footer": "1.0.5",
     "gulp-git": "^1.6.0",
-    "gulp-header": "1.2.2",
+    "gulp-header": "1.8.2",
     "gulp-jscs": "^3.0.2",
     "gulp-jscs-stylish": "1.4.0",
     "gulp-jshint": "2.0.1",
