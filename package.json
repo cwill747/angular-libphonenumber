@@ -31,7 +31,7 @@
     "gulp-exit": "0.0.2",
     "gulp-filter": "^3.0.1",
     "gulp-footer": "1.0.5",
-    "gulp-git": "^1.6.0",
+    "gulp-git": "^1.12.0",
     "gulp-header": "1.8.8",
     "gulp-jscs": "^3.0.2",
     "gulp-jscs-stylish": "1.4.0",
