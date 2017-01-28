@@ -47,7 +47,7 @@
     "karma-coverage": "0.2.7",
     "karma-coveralls": "0.1.5",
     "karma-jasmine": "0.3.5",
-    "protractor": "^4.0.4",
+    "protractor": "^5.0.0",
     "requirejs": "2.3.2",
     "string-mask": "0.3.0"
   }
