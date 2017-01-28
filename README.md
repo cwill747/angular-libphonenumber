@@ -1,5 +1,7 @@
 # angular-libphonenumber - [AngularJS](http://angularjs.org/) input masks for phone numbers
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/cwill747/angular-libphonenumber.svg)](https://greenkeeper.io/)
+
 
 | Info          | Badges        |
 | ------------- | ------------- |
