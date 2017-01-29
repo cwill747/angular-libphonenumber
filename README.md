@@ -8,6 +8,8 @@
 | Testing  | [![Build Status][build-image]][build-url] [![Coverage Status][coverage-image]][coverage-url] |
 | Quality |  [![Dependencies status][dep-status-image]][dep-status-url]  [![Code Climate][code-climate-image]][code-climate-url] |
 
+[![Sauce Test Status](https://saucelabs.com/browser-matrix/alibphonenumber.svg)](https://saucelabs.com/u/alibphonenumber)
+
 
 ## Description
 angular-libphonenumber is an angular directive that can be used as an input mask.

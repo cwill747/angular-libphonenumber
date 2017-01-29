@@ -1,83 +1,138 @@
-/* global element, browser, by, protractor */
-describe('phoneValidator', function() {
-  beforeEach(function() {
-    browser.get('/demo/index.html');
+var TestUtil = {
+  compile: function(html, initialScope) {
+    var container;
+
+    inject(function($compile, $rootScope) {
+      if (angular.isDefined(initialScope)) {
+        angular.extend($rootScope, initialScope);
+      }
+
+      container = $compile(html)($rootScope);
+      $rootScope.$apply();
+    });
+
+    return container;
+  }
+};
+
+describe('phonenumber', function() {
+  beforeEach(module('cwill747.phonenumber'));
+
+  it('should register a $parser and a $formatter', function() {
+    var input = TestUtil.compile('<input ng-model="model">');
+    var model = input.controller('ngModel');
+
+    var maskedInput = TestUtil.compile('<input type="text" ng-model="maskedModel" phone-number country-code="us">');
+    var maskedModel = maskedInput.controller('ngModel');
+
+    expect(maskedModel.$parsers.length).toBe(model.$parsers.length + 2);
+    expect(maskedModel.$formatters.length).toBe(model.$formatters.length + 2);
   });
 
-  it('should load the demo page', function() {
-    expect(browser.getTitle()).toEqual('Angular libphonenumber Demo');
+  it('should format initial model values', function() {
+    var input = TestUtil.compile('<input type="text" ng-model="model" phone-number ' +
+      'country-code="us">', {
+      model: '3011201034'
+    });
+
+    var model = input.controller('ngModel');
+    expect(model.$viewValue).toBe('(301) 120-1034');
   });
 
-  describe('phone-number:', function() {
-    var runTests = function(input, nonFormatted) {
-      var BS = protractor.Key.BACK_SPACE;
-      var LK = protractor.Key.ARROW_LEFT;
-      var DL = protractor.Key.DELETE;
-      var tests = [
-        {key: '1', viewValue: '1', modelValue: '1'},
-        {key: '2', viewValue: '12', modelValue: '12'},
-        {key: '3', viewValue: '1 23', modelValue: '123'},
-        {key: '4', viewValue: '1 234', modelValue: '1234'},
-        {key: '5', viewValue: '1 234-5', modelValue: '12345'},
-        {key: '6', viewValue: '1 234-56', modelValue: '123456'},
-        {key: '7', viewValue: '1 234-567', modelValue: '1234567'},
-        {key: '8', viewValue: '1 234-567-8', modelValue: '12345678'},
-        {key: '9', viewValue: '1 234-567-89', modelValue: '123456789'},
-        {key: '0', viewValue: '1 234-567-890', modelValue: '1234567890'},
-        {key: '1', viewValue: '1 234-567-8901', modelValue: '12345678901'},
-        {key: BS, viewValue: '1 234-567-890', modelValue: '1234567890'},
-        {key: BS, viewValue: '1 234-567-89', modelValue: '123456789'},
-        {key: BS, viewValue: '1 234-567-8', modelValue: '12345678'},
-        {key: BS, viewValue: '1 234-567', modelValue: '1234567'},
-        {key: BS, viewValue: '1 234-56', modelValue: '123456'},
-        {key: BS, viewValue: '1 234-5', modelValue: '12345'},
-        {key: BS, viewValue: '1 234', modelValue: '1234'},
-        {key: BS, viewValue: '1 23', modelValue: '123'},
-        {key: BS, viewValue: '12', modelValue: '12'},
-        {key: BS, viewValue: '1', modelValue: '1'},
-        {key: BS, viewValue: '', modelValue: ''},
-        {key: '1', viewValue: '1', modelValue: '1'},
-        {key: '2', viewValue: '12', modelValue: '12'},
-        {key: '3', viewValue: '1 23', modelValue: '123'},
-        {key: '4', viewValue: '1 234', modelValue: '1234'},
-        {key: '5', viewValue: '1 234-5', modelValue: '12345'},
-        {key: '6', viewValue: '1 234-56', modelValue: '123456'},
-        {key: '7', viewValue: '1 234-567', modelValue: '1234567'},
-        {key: '8', viewValue: '1 234-567-8', modelValue: '12345678'},
-        {key: '9', viewValue: '1 234-567-89', modelValue: '123456789'},
-        {key: '0', viewValue: '1 234-567-890', modelValue: '1234567890'},
-        {key: '1', viewValue: '1 234-567-8901', modelValue: '12345678901'},
-        // Move cursor one backwards
-        {key: LK, viewValue: '1 234-567-8901', modelValue: '12345678901'}, // 1 234-567-890|1
-        // Delete 0
-        {key: BS, viewValue: '1 234-567-891', modelValue: '1234567891'},
-        // Add 9
-        {key: '9', viewValue: '1 234-567-8991', modelValue: '12345678991'}, // 1 234-567-899|1
-        {key: LK, viewValue: '1 234-567-8991', modelValue: '12345678991'},  // 1 234-567-89|91
-        {key: LK, viewValue: '1 234-567-8991', modelValue: '12345678991'},  // 1 234-567-8|991
-        {key: LK, viewValue: '1 234-567-8991', modelValue: '12345678991'},  // 1 234-567-|8991
-        {key: LK, viewValue: '1 234-567-8991', modelValue: '12345678991'},  // 1 234-567|-8991
-        {key: LK, viewValue: '1 234-567-8991', modelValue: '12345678991'},  // 1 234-56|7-8991
-        {key: LK, viewValue: '1 234-567-8991', modelValue: '12345678991'},  // 1 234-5|67-8991
-        {key: BS, viewValue: '1 234-678-991', modelValue: '1234678991'},    // 1 234-|67-8991
-        {key: '1', viewValue: '1 234-167-8991', modelValue: '12341678991'},  // 1 234-1|67-8991
-        {key: LK, viewValue: '1 234-167-8991', modelValue: '12341678991'},  // 1 234-|167-8991
-        {key: BS, viewValue: '1 234-167-8991', modelValue: '12341678991'},  // 1 234-|167-8991
-        {key: DL, viewValue: '1 234-678-991', modelValue: '1234678991'} // 1 234-|678-991
-      ];
+  it('should fail silently with a non-valid country code', function() {
+    var input = TestUtil.compile('<input type="text" ng-model="model" phone-number ' +
+      'country-code="xx">', {
+      model: '3011201034'
+    });
 
-      for (var i = 0; i < tests.length; i++) {
-        input.sendKeys(tests[i].key);
-        expect(input.getAttribute('value')).toEqual(tests[i].viewValue);
-        expect(nonFormatted.getText()).toEqual(tests[i].modelValue);
+    var model = input.controller('ngModel');
+    expect(model.$valid).toBeFalsy();
+  });
+
+  it('should format the number as it is typed', function() {
+    var input = TestUtil.compile('<input type="text" ng-model="model" phone-number ' +
+      'country-code="us">');
+    var model = input.controller('ngModel');
+
+    var tests = [
+      {key: '1', viewValue: '1', modelValue: '1'},
+      {key: '2', viewValue: '12', modelValue: '12'},
+      {key: '3', viewValue: '1 23', modelValue: '123'},
+      {key: '4', viewValue: '1 234', modelValue: '1234'},
+      {key: '5', viewValue: '1 234-5', modelValue: '12345'},
+      {key: '6', viewValue: '1 234-56', modelValue: '123456'},
+      {key: '7', viewValue: '1 234-567', modelValue: '1234567'},
+      {key: '8', viewValue: '1 234-567-8', modelValue: '12345678'},
+      {key: '9', viewValue: '1 234-567-89', modelValue: '123456789'},
+      {key: '0', viewValue: '1 234-567-890', modelValue: '1234567890'},
+      {key: '1', viewValue: '1 234-567-8901', modelValue: '12345678901'}
+    ];
+
+    for (var i = 0; i < tests.length - 1; i++) {
+      input.val(tests[i].modelValue).triggerHandler('input');
+      expect(model.$viewValue).toBe(tests[i].viewValue);
+      expect(model.$modelValue).toBe(tests[i].modelValue);
+      expect(model.$valid).toBeFalsy();
+    }
+    input.val(tests[tests.length - 1].modelValue).triggerHandler('input');
+    expect(model.$viewValue).toBe(tests[tests.length - 1].viewValue);
+    expect(model.$modelValue).toBe(tests[tests.length - 1].modelValue);
+    expect(model.$valid).toBeTruthy();
+  });
+  it('should ignore non digits', function() {
+    var input = TestUtil.compile('<input type="text" ng-model="model" phone-number ' +
+      'country-code="us">');
+    var model = input.controller('ngModel');
+
+    var tests = [
+      {value: '@', viewValue: '', modelValue: ''},
+      {value: '2-', viewValue: '2', modelValue: '2'},
+      {value: '23a', viewValue: '23', modelValue: '23'},
+      {value: '23_34', viewValue: '233-4', modelValue: '2334'},
+      {value: '23346!', viewValue: '233-46', modelValue: '23346'},
+      {value: '23346!32400', viewValue: '(233) 463-2400', modelValue: '2334632400'}
+    ];
+
+    tests.forEach(function(test) {
+      input.val(test.value).triggerHandler('input');
+      expect(model.$viewValue).toBe(test.viewValue);
+      expect(model.$modelValue).toBe(test.modelValue);
+    });
+  });
+
+  it('should strip out any garbage characters from the model and the view', function() {
+    var input = TestUtil.compile('<input type="text" ng-model="model" phone-number ' +
+      'country-code="us">');
+    var model = input.controller('ngModel');
+
+    input.val('-----()----9sDF_').triggerHandler('input');
+    expect(model.$viewValue).toBe('9');
+    expect(model.$modelValue).toBe('9');
+
+  });
+});
+
+describe('mock libphonenumber', function() {
+  var $log;
+  var $window;
+  beforeEach(module('cwill747.phonenumber'));
+
+  beforeEach(inject(function(_$log_, _$window_) {
+    $log = _$log_;
+    $window = _$window_;
+    $window.phoneUtils = {
+      formatAsTyped: function() {
+        throw 'ERROR';
       }
     };
+  }));
 
-    it('should apply a phone number mask', function() {
-      var input = element(by.id('phoneNumberTest'));
-      var nonFormatted = element(by.id('phone-nonformatted'));
-      element(by.id('countrycode')).sendKeys('us');
-      runTests(input, nonFormatted);
+  it('should error if libphonenumber throws', function() {
+
+    TestUtil.compile('<input type="text" ng-model="model" phone-number ' +
+      'country-code="us">', {
+      model: '3011201034'
     });
+    expect($log.debug.logs[1][0]).toEqual('ERROR');
   });
 });

@@ -1,10 +1,11 @@
 var express = require('express');
 var gulp = require('gulp');
-var karma = require('karma').server;
+var Server = require('karma').Server;
 var path = require('path');
 var plugins = require('gulp-load-plugins')({
   config: path.join(__dirname, 'package.json')
 });
+var gutil = require('gulp-util');
 
 var noop = function() {};
 var pkg = require('./package.json');
@@ -27,7 +28,7 @@ var footer = [
 var paths = {
   src: {
     files: ['src/**/*.js'],
-    e2e: ['src/**/*.spec.js']
+    e2e: ['src/**/*.e2e.js']
   }
 };
 var commonBuild = {
@@ -39,7 +40,7 @@ var commonBuild = {
 
 function filterNonCodeFiles() {
   return plugins.filter(function(file) {
-    return !/\.json$|\.spec\.js$|\.test\.js$/.test(file.path);
+    return !/\.json$|\.spec\.js$|\.e2e\.js$/.test(file.path);
   });
 }
 
@@ -82,25 +83,41 @@ gulp.task('serve', ['build'], function() {
   server.listen(8000, function() {
     console.log('Server running in port 8000');
   });
+  // gulp.src('./')
+  //   .pipe(plugins.webserver());
 });
 
 gulp.task('test:unit', function(done) {
-  var karmaConfig = {
+
+  new Server({
     singleRun: true,
     configFile: path.join(__dirname, 'config/karma.conf.js')
-  };
-
-  karma.start(karmaConfig, done);
+  }, function(err){
+    if(err === 0){
+      done();
+    } else {
+      done(new gutil.PluginError('karma', {
+        message: 'Karma Tests failed'
+      }));
+    }
+  }).start();
 });
 
 gulp.task('test-watch', function(done) {
-  var karmaConfig = {
+
+  new Server({
     singleRun: false,
     autoWatch: true,
     configFile: path.join(__dirname, 'config/karma.conf.js')
-  };
-
-  karma.start(karmaConfig, done);
+  }, function(err){
+    if(err === 0){
+      done();
+    } else {
+      done(new gutil.PluginError('karma', {
+        message: 'Karma Tests failed'
+      }));
+    }
+  }).start();
 });
 
 // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
@@ -110,8 +127,9 @@ gulp.task('webdriver_update', require('gulp-protractor').webdriver_update);
 gulp.task('test:e2e', ['webdriver_update', 'serve'], function() {
   gulp.src(paths.src.e2e)
     .pipe(plugins.protractor.protractor({
-      configFile: 'config/protractor.conf.js'
+      configFile: path.join(__dirname, 'config/protractor.conf.js')
     }))
+    .on('error', function(e) { throw e; })
     .pipe(plugins.exit());
 });
 
