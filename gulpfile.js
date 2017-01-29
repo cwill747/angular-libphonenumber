@@ -129,7 +129,7 @@ gulp.task('test:e2e', ['webdriver_update', 'serve'], function() {
     .pipe(plugins.protractor.protractor({
       configFile: path.join(__dirname, 'config/protractor.conf.js')
     }))
-    .on('error', function(e) { throw e })
+    .on('error', function(e) { throw e; })
     .pipe(plugins.exit());
 });
 

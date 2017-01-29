@@ -1,9 +1,6 @@
 var config = {
   framework: 'jasmine',
   baseUrl: 'http://localhost:8000',
-  onPrepare: function () {
-    var caps = browser.getCapabilities()
-  },
   specs: ['src/phone-number.e2e.js'],
   jasmineNodeOpts: {
     defaultTimeoutInterval: 60000
@@ -23,14 +20,14 @@ if (process.env.TRAVIS) {
     browserName: 'firefox',
     version: '50',
     platform: 'Windows 8.1',
-    name: "firefox-tests",
+    name: 'firefox-tests',
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
     'build': process.env.TRAVIS_BUILD_NUMBER
   }, {
     browserName: 'chrome',
     version: '55',
     platform: 'Windows 8.1',
-    name: "chrome-tests",
+    name: 'chrome-tests',
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
     'build': process.env.TRAVIS_BUILD_NUMBER
   }];

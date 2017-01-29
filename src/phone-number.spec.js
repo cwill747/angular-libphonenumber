@@ -122,14 +122,14 @@ describe('mock libphonenumber', function() {
     $window = _$window_;
     $window.phoneUtils = {
       formatAsTyped: function() {
-        throw "ERROR";
+        throw 'ERROR';
       }
-    }
+    };
   }));
 
   it('should error if libphonenumber throws', function() {
 
-    var input = TestUtil.compile('<input type="text" ng-model="model" phone-number ' +
+    TestUtil.compile('<input type="text" ng-model="model" phone-number ' +
       'country-code="us">', {
       model: '3011201034'
     });
