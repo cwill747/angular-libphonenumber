@@ -9,7 +9,7 @@
  */
 /* global angular */
 angular.module('cwill747.phonenumber', [])
-  .directive('phoneNumber', ['$log', '$window', function($log, $window) {
+  .directive('phoneNumber', ['$log', '$timeout', '$window', function($log, $timeout, $window) {
     function clearValue(value) {
       if (!value) {
         return value;
@@ -90,7 +90,10 @@ angular.module('cwill747.phonenumber', [])
           ctrl.$setViewValue(formattedValue);
           ctrl.$render();
 
-          el.setSelectionRange(start, end);
+          // Fix selection range on mobile devices
+          $timeout(function() {
+            el.setSelectionRange(start, end);
+          });
           //return cleaned;
           return clearValue(formattedValue);
         }
