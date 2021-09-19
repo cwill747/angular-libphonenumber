@@ -1,5 +1,6 @@
-# angular-libphonenumber - [AngularJS](http://angularjs.org/) input masks for phone numbers
+# ARCHIVED - angular-libphonenumber - [AngularJS](http://angularjs.org/) input masks for phone numbers
 
+ARCHIVAL NOTE - This library was written for Angular 1, which goes EOL at the end of this year. Also, I've been so out of the UI programming game for so long, I wouldn't know if this worked anyways.
 
 | Info          | Badges        |
 | ------------- | ------------- |
